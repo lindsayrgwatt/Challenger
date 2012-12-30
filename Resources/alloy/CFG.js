@@ -1,3 +1,5 @@
 module.exports = {
-    dependencies: {}
+    dependencies: {
+        "com.appcelerator.searchForBooks": "1.0"
+    }
 };
