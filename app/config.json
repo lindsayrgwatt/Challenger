@@ -1,11 +1,10 @@
 {
-	"global": {}, 
+	"global": {"server_url":"http://localhost:3000"}, 
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 
 	"os:ios": {}, 
 	"os:android": {}, 
 	"dependencies": {
-        "com.appcelerator.searchForBooks":"1.0"
     }
 }
