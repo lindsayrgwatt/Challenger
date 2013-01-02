@@ -1,15 +1,15 @@
 <Alloy>
 	<TabGroup backgroundColor="white" >
-            <Tab id="tab1" title="Home" icon="KS_nav_views.png">
+            <Tab id="tab1" title="Home" icon="53-house.png">
 				<Require id="homeTab" src="home" type="view"/>
             </Tab>
-            <Tab id="tab2" title="Map" icon="KS_nav_views.png">
+            <Tab id="tab2" title="Map" icon="103-map.png">
             	<Require id="mapTab" src="map" type="view"/>
             </Tab>
-           <Tab id="tab3" title="Nearby" icon="KS_nav_views.png">
+           <Tab id="tab3" title="Nearby" icon="166-newspaper.png">
                 <Require id="nearbyTab" src="nearby" type="view"/>
             </Tab>
-           <Tab id="tab4" title="About" icon="KS_nav_views.png">
+           <Tab id="tab4" title="About" icon="123-id-card.png">
                 <Require id="aboutTab" src="about" type="view"/>
             </Tab>
             <!-- Use the Require tag to include external Ti.UI.Tab views -->
