@@ -1,0 +1,11 @@
+<Alloy>
+	<Window class="container" id="placeWin" modal="true" >
+		<RightNavButton>
+            <Button title="Back" onClick="closeWindow" />
+        </RightNavButton>
+        
+        <ImageView id="mapImage" />
+        
+        <Label id="placeName">Place Page</Label>
+    </Window>
+</Alloy>

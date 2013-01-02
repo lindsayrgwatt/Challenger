@@ -2,12 +2,8 @@
     <Window id="win">
 
         <!-- Note the ns attribute is used to change the default namespace. -->
-        <View id="mapview" ns="Ti.Map" animate="true" regionFit="true" userLocation="true">
-
-            <Annotation id="mountainView" latitude="37.390749" longitude="-122.081651" onClick="doClick" />
-
-            <!-- Place other child views here, such as an ImageView to add an overlay. -->
-
+        <View id="mapView" ns="Ti.Map" animate="true" regionFit="true" userLocation="true">
+        	
         </View>
     </Window>
 </Alloy>
