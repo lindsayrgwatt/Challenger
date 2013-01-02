@@ -1,5 +1,4 @@
 module.exports = {
-    dependencies: {
-        "com.appcelerator.searchForBooks": "1.0"
-    }
+    dependencies: {},
+    server_url: "http://localhost:3000"
 };

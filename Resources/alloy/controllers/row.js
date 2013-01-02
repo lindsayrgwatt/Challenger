@@ -14,12 +14,12 @@ function Controller() {
         id: "thumbnail"
     }), "ImageView", $.__views.row);
     $.__views.row.add($.__views.thumbnail);
-    $.__views.__alloyId1 = A$(Ti.UI.createView({
+    $.__views.__alloyId9 = A$(Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
-        id: "__alloyId1"
+        id: "__alloyId9"
     }), "View", $.__views.row);
-    $.__views.row.add($.__views.__alloyId1);
+    $.__views.row.add($.__views.__alloyId9);
     $.__views.title = A$(Ti.UI.createLabel({
         color: "#000",
         font: {
@@ -30,8 +30,8 @@ function Controller() {
         left: "60dp",
         right: "5dp",
         id: "title"
-    }), "Label", $.__views.__alloyId1);
-    $.__views.__alloyId1.add($.__views.title);
+    }), "Label", $.__views.__alloyId9);
+    $.__views.__alloyId9.add($.__views.title);
     $.__views.authors = A$(Ti.UI.createLabel({
         color: "#333",
         font: {
@@ -43,8 +43,8 @@ function Controller() {
         left: "60dp",
         right: "5dp",
         id: "authors"
-    }), "Label", $.__views.__alloyId1);
-    $.__views.__alloyId1.add($.__views.authors);
+    }), "Label", $.__views.__alloyId9);
+    $.__views.__alloyId9.add($.__views.authors);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
