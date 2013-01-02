@@ -1,6 +1,24 @@
 <Alloy>
-  <Window id="win">
-    <Require type="widget" src="com.appcelerator.searchForBooks" id="sfb"/>
-    <TableView id="table"/>
-  </Window>
+	<TabGroup backgroundColor="white" >
+            <Tab id="tab1" title="Home" icon="KS_nav_views.png">
+				<Require id="button1" src="home" type="view"/>
+            </Tab>
+            <Tab id="tab2" title="Map" icon="KS_nav_views.png">
+                <Window id="win2" title="Tab 2">
+                    <Label id="label2" color="#999">I am Window 2</Label>
+                </Window>
+            </Tab>
+           <Tab id="tab2" title="Nearby" icon="KS_nav_views.png">
+                <Window id="win2" title="Tab 2">
+                    <Label id="label2" color="#999">I am Window 3</Label>
+                </Window>
+            </Tab>
+           <Tab id="tab2" title="About" icon="KS_nav_views.png">
+                <Window id="win2" title="Tab 2">
+                    <Label id="label2" color="#999">I am Window 4</Label>
+                </Window>
+            </Tab>
+            <!-- Use the Require tag to include external Ti.UI.Tab views -->
+        </TabGroup>
+
 </Alloy>
