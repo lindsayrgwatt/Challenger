@@ -6,5 +6,6 @@
 	"os:ios": {}, 
 	"os:android": {}, 
 	"dependencies": {
+		"nl.fokkezb.pullToRefresh":"1.1"
     }
 }

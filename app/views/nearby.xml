@@ -1,18 +1,11 @@
-<Alloy>
-    <Window id="win" backgroundColor="white">
-        <TableView id="table">
-            <TableViewSection id="sectionFruit" headerTitle="Fruit">
-                <TableViewRow title="Apple"/>
-                <TableViewRow title="Bananas"/>
-            </TableViewSection>
-            <TableViewSection id="sectionVeg" headerTitle="Vegetables">
-                <TableViewRow title="Carrots"/>
-                <TableViewRow title="Potatoes"/>
-            </TableViewSection>
-            <TableViewSection id="sectionFish" headerTitle="Fish">
-                <TableViewRow title="Cod"/>
-                <TableViewRow title="Haddock"/>
-            </TableViewSection>
-        </TableView>
+<Alloy> 
+	<Window navBarHidden="true">
+    	<NavigationGroup id="nav" platform="ios">
+    		<Window id="win">
+		        <TableView id="placeTable">
+		        	
+		        </TableView>
+	        </Window>
+		</NavigationGroup>        
     </Window>
 </Alloy>
