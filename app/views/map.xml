@@ -1,9 +1,13 @@
 <Alloy>
-    <Window id="win">
-
-        <!-- Note the ns attribute is used to change the default namespace. -->
-        <View id="mapView" ns="Ti.Map" animate="true" regionFit="true" userLocation="true">
-        	
-        </View>
+	<Window navBarHidden="true">
+        <NavigationGroup id="nav" platform="ios">
+		    <Window id="win">
+		
+		        <!-- Note the ns attribute is used to change the default namespace. -->
+		        <View id="mapView" ns="Ti.Map" animate="true" regionFit="true" userLocation="true">
+		        	
+		        </View>
+		    </Window>
+	    </NavigationGroup>
     </Window>
 </Alloy>

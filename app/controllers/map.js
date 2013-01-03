@@ -10,7 +10,7 @@ var pinhandle = function(evt){
         var placePage = Alloy.createController('place');
         var placemark = places[ evt.annotation.myid ];
         placePage.setPlace( placemark );
-		placePage.getView().open();
+		$.nav.open(placePage.getView());
     }
 };
 
