@@ -4,8 +4,19 @@
             <Button title="Back" onClick="closeWindow" />
         </RightNavButton>
         
-        <ImageView id="mapImage" />
+        <Label id="placeName">Place Name</Label>
         
-        <Label id="placeName">Place Page</Label>
+        <ImageView id="mapImage" />        
+
+        <Label id="streetAddress">Street Address</Label>
+        <Label id="placeTags">placeTags</Label>
+        
+        <Label id="placeMemo">Place memo</Label>
+        
+        <Button id="hoursButton" onClick="doHours" title="Hours & Directions" />
+            
+        <Button id="callButton" onClick="doCall" title="Call" />
+
+		<View id="imagesViewHolder"  />
     </Window>
 </Alloy>

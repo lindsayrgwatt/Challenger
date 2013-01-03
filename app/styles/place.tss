@@ -1,3 +1,33 @@
-".container": {
-	backgroundColor: "white"
+"Window": {
+	backgroundColor:"white"
+},
+"#placeName":{
+	top:10,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color:'#999'
+},
+"#streetAddress":{
+	top: 120
+},
+"#placeTags":{
+	top: 140
+},
+"#mapImage":{
+	top: 160
+},
+"#placeMemo":{
+	top: 200	
+},
+"#hoursButton":{
+	left: 0,
+	top: 240
+},
+"#callButton":{
+	left: 200,
+	top: 240
+},
+"#imagesViewHolder":{
+	top :300,
+	left: 0
 }
