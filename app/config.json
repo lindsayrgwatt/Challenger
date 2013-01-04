@@ -1,5 +1,5 @@
 {
-	"global": {"serverUrl":"http://localhost:3000", "theme":"default"}, 
+	"global": {"serverUrl":"http://10.0.2.2:3000", "theme":"default"}, 
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 

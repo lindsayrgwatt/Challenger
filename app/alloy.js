@@ -11,4 +11,5 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
+Ti.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
 Ti.Geolocation.purpose = "We need your location to shows you recommended nearby places";
