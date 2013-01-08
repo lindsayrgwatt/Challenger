@@ -1,4 +1,5 @@
 
+var category;
 
 var rowHandle = function(evt){
     Ti.API.info("Row " + evt.index + " clicked, source: " + evt.source + ", id: " + evt.rowData.placemark.place.name);
@@ -11,6 +12,11 @@ var rowHandle = function(evt){
     placePage.setPlace( placemark );
 	$.nav.open(placePage.getView());
 };
+
+exports.setCategory = function( category ){	
+	category = category;
+}
+
 
 $.placeTable.addEventListener('click', rowHandle);	
 
@@ -39,7 +45,7 @@ function loadPlaces(){
 	    var altitudeAccuracy = e.coords.altitudeAccuracy;
 	
 		
-		var url = Alloy.CFG.serverUrl + "/publishers/georgiastraight/publisher_categories/best-of-vancouver-2012/perspectives.json";
+		var url = Alloy.CFG.serverUrl + "/publishers/" + Alloy.CFG.publisher +  "/publisher_categories/best-of-vancouver-2012/perspectives.json";
 		
 		Ti.API.log( "info", "grabbing contents from: " + url);
 		

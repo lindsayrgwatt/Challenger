@@ -43,8 +43,9 @@ Titanium.Geolocation.getCurrentPosition(function(e)
 
 	$.mapView.setRegion( region );
 	
-	var url = Alloy.CFG.serverUrl + "/publishers/georgiastraight/publisher_categories/best-of-vancouver-2012/perspectives.json";
-	
+	var url = Alloy.CFG.serverUrl + "/publishers/" + Alloy.CFG.publisher +  "/publisher_categories/best-of-vancouver-2012/perspectives.json";
+
+
 	Ti.API.log( "info", "grabbing contents from: " + url);
 	
 	var xhr = Ti.Network.createHTTPClient({
@@ -69,9 +70,7 @@ Titanium.Geolocation.getCurrentPosition(function(e)
 	            pinView.addEventListener( 'click', pinhandle );
 	            
 	            $.mapView.addAnnotation( pinView );
-
-			}
-			
+			}			
 		},
 		onerror: function(e) {	
 			alert("Error:"+JSON.stringify(e));
@@ -80,6 +79,5 @@ Titanium.Geolocation.getCurrentPosition(function(e)
 	});
 	xhr.open("GET", url +"?lat="+latitude+"&lng="+longitude);
 	xhr.send();
-	
  
 });
