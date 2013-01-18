@@ -11,7 +11,6 @@
 },
 "#innerwin": {
 	backgroundColor : 'white',
-	barColor : "black",
 	left : "0",
 	zIndex : "10"
 },
@@ -29,7 +28,7 @@
 	width : Ti.Platform.displayCaps.platformWidth
 },
 "#button": {
-	image: "/ds.slideMenu/ButtonMenu.png",
+	image: "ButtonMenu.png",
 	left : "10",
 	top : "7",
 	width : "35",
