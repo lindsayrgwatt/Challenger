@@ -97,6 +97,11 @@ $.ds.tableView.addEventListener('click', function selectRow(e) {
 		currentView = Alloy.createController(e.row.customView).getView();
 		currentView.navGroup = $.ds.nav;
 		$.ds.button.hide();
+		
+		currentView.addEventListener('close', function(e){
+			$.ds.button.show();
+		});
+		
 		$.ds.nav.open( currentView );
 	}
 	$.ds.toggleSlider();
