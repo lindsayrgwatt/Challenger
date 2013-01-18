@@ -10,7 +10,7 @@ var rowHandle = function(evt){
     var placePage = Alloy.createController('place');
     var placemark = evt.rowData.placemark;
     placePage.setPlace( placemark );
-	$.nav.open(placePage.getView());
+	$.win.navGroup.open(placePage.getView());
 };
 
 exports.setCategory = function( category ){	

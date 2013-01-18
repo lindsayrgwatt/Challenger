@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container"  >
+	<Window class="container navWindow">
 
         <Label id="placeName">Place Name</Label>
         

@@ -1,5 +1,9 @@
 <Alloy>
-	<Window id="win">
-		<Require type="widget" src="ds.slideMenu" id="ds"/>
+	<Window id="win" >
+		<NavigationGroup id='nav'>
+			<Window id='winnav' class="navWindow">
+				<Require src="widget" id="ds"/>
+			</Window>
+		</NavigationGroup>
 	</Window>
 </Alloy>

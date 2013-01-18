@@ -1,11 +1,7 @@
 <Alloy> 
-	<Window navBarHidden="true">
-    	<NavigationGroup id="nav" platform="ios">
-    		<Window id="win">
-		        <TableView id="placeTable">
-		        	
-		        </TableView>
-	        </Window>
-		</NavigationGroup>        
+	<Window id="win" class="navWindow">
+	    <TableView id="placeTable">
+	    	
+	    </TableView>    
     </Window>
 </Alloy>
