@@ -87,7 +87,8 @@ data.push( section );
 // Pass data to widget tableView
 $.ds.tableView.data = data;
 
-var currentView = Alloy.createController("home").getView();
+var homeController = Alloy.createController("home");
+var currentView = homeController.getView();
 $.ds.innerwin.add(currentView);
 
 // Swap views on menu item click
@@ -99,6 +100,14 @@ $.ds.tableView.addEventListener('click', function selectRow(e) {
 		$.ds.nav.open( currentView );
 	}
 	$.ds.toggleSlider();
+});
+
+
+var mapBtn = Titanium.UI.createButton({title:'info'});
+$.ds.innerwin.rightNavButton = mapBtn;
+ 
+mapBtn.addEventListener('click', function(e){
+     homeController.refreshWindow();
 });
 
 
