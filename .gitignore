@@ -7,3 +7,4 @@ Resources/**/*
 Resources
 .settings/**/*
 plugins/ti.alloy/*.pyc
+.*
