@@ -1,0 +1,12 @@
+"#row": {
+  selectedBackgroundColor : "#666",
+  selectedColor: 'white',
+  height: "64px"
+},
+"#icon": {
+  width: "200px",
+  right: "30px"
+},
+"#title": {
+  right: "235px"
+}

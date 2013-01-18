@@ -17,6 +17,13 @@ exports.setCategory = function( category ){
 	category = category;
 }
 
+$.placeTable.setFooterView( Alloy.createController('footerRow', {
+	title : 'Powered By: ',
+	image : "images/placeling-logo.png"
+}).getView() ); 
+
+$.placeTable.setFooterTitle("test");
+
 
 $.placeTable.addEventListener('click', rowHandle);	
 
@@ -64,7 +71,7 @@ function loadPlaces(){
 				}				
 				$.placeTable.setData( tableData );	
 				
-						
+				
 			},
 			onerror: function(e) {	
 				alert("Error:"+JSON.stringify(e));

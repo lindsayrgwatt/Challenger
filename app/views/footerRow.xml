@@ -1,0 +1,6 @@
+<Alloy>
+  <View id="row">
+    <Label id="title"/>
+    <ImageView id="icon"/>
+  </View>
+</Alloy>
