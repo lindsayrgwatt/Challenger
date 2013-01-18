@@ -108,7 +108,7 @@ $.ds.tableView.addEventListener('click', function selectRow(e) {
 });
 
 
-var mapBtn = Titanium.UI.createButton({title:'info'});
+var mapBtn = Titanium.UI.createButton({systemButton: Titanium.UI.iPhone.SystemButton.INFO_LIGHT });
 $.ds.innerwin.rightNavButton = mapBtn;
  
 mapBtn.addEventListener('click', function(e){
