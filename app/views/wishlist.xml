@@ -1,0 +1,7 @@
+<Alloy>
+	<Window class="container navWindow">
+		<TableView id="placeTable">
+	    	
+	    </TableView>  
+	</Window>
+</Alloy>
