@@ -1,9 +1,6 @@
 <Alloy>
-	<Window id="win" >
-		<NavigationGroup id='nav'>
-			<Window id='winnav' class="navWindow">
-				<Require src="widget" id="ds"/>
-			</Window>
-		</NavigationGroup>
+
+	<Window id='win' class="navWindow">
+		<Require src="widget" id="ds"/>
 	</Window>
 </Alloy>

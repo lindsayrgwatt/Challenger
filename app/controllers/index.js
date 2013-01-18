@@ -93,12 +93,14 @@ $.ds.innerwin.add(currentView);
 // Swap views on menu item click
 $.ds.tableView.addEventListener('click', function selectRow(e) {
 	if (currentView.id != e.row.customView) {
-		$.ds.innerwin.remove(currentView);
 		currentView = Alloy.createController(e.row.customView).getView();
-		$.ds.innerwin.add(currentView);
+		currentView.navGroup = $.ds.nav;
+		$.ds.button.hide();
+		$.ds.nav.open( currentView );
 	}
 	$.ds.toggleSlider();
 });
+
 
 // Set row title highlight colour
 var storedRowTitle = null;
