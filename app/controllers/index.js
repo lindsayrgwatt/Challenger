@@ -82,13 +82,15 @@ function drawSideBar(){
 	
 	customView.add(customLabel);
 	
-	section.headerView = customView;
-	
+	section.headerView = customView;	
 	
 	var places = Alloy.createCollection('Place');
-	places.fetch({query: 'SELECT * FROM  users '}); //places ORDER BY lastViewed DESC LIMIT 5'});
 	
-	places.forEach( function(place){
+	places.fetch();
+	
+	places.sort();
+	
+	places.first(5).forEach( function(place){
 		section.add(Alloy.createController('menurow', {
 			title : place.get('name'),
 			customView : 'place',

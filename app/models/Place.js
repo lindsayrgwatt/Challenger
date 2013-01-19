@@ -34,7 +34,11 @@ exports.definition = {
 	extendCollection: function(Collection) {		
 		_.extend(Collection.prototype, {
 			
-			// extended functions go here			
+            // Implement the comparator method.
+    	    comparator : function( place ) {
+        	    return place.get('lastVisited');
+            }
+		
 			
 		}); // end extend
 		
