@@ -100,7 +100,6 @@ function drawSideBar(){
 	
 	data.push( section );
 	
-	
 	// Pass data to widget tableView
 	$.ds.tableView.data = data;
 }
@@ -109,6 +108,7 @@ drawSideBar();
 
 var homeController = Alloy.createController("home");
 var currentView = homeController.getView();
+currentView.navGroup = $.ds.nav;
 $.ds.innerwin.add(currentView);
 
 // Swap views on menu item click

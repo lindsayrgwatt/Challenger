@@ -37,7 +37,16 @@ Ti.App.addEventListener('openLink',function(e){
 	if (URI['realtive'] != ""){
 		var nearbyPage = Alloy.createController('nearby');
 	    nearbyPage.setCategory( URI['relative'].split("/")[-1] );
-		nearbyPage.getView().open();
+		nearbyPage.getView().navGroup = $.win.navGroup;
+		$.win.navGroup.open( nearbyPage.getView()) ;
+		
+		$.ds.button.hide();
+		
+		currentView.addEventListener('close', function(e){
+			$.ds.button.show();
+			drawSideBar();
+		});
+		
 	} else {
 		Ti.Platform.openURL( e.URL );
 	}
