@@ -14,13 +14,13 @@ migration.up = function(db) {
 		},
 		"adapter": {
 			"type": "placeId:string",
-			"collection_name": "places"
+			"collection_name": "Place"
 		}
     });
 
 };
 
 migration.down = function(db) {
-	db.dropTable("places");
+	db.dropTable("Place");
 
 };

@@ -86,10 +86,9 @@ function drawSideBar(){
 	
 	
 	var places = Alloy.createCollection('Place');
-	places.fetch({query: 'SELECT * FROM places ORDER BY lastViewed DESC'});
+	places.fetch({query: 'SELECT * FROM  users '}); //places ORDER BY lastViewed DESC LIMIT 5'});
 	
 	places.forEach( function(place){
-		Titanium.API.log( JSON.stringify( place ) );
 		section.add(Alloy.createController('menurow', {
 			title : place.get('name'),
 			customView : 'place',

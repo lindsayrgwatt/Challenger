@@ -15,7 +15,7 @@ exports.definition = {
 		},
 		"adapter": {
 			"type": "sql",
-			"collection_name": "places",
+			"collection_name": "Place",
 			"idAttribute": "placeId" 
 		}
 	},		

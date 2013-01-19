@@ -13,27 +13,23 @@ function doCall(){
 	
 }
 
-exports.setPlace = function( placemark ){
+exports.setPlaceId = function( place_id ){
 	
-	var collection = Alloy.createCollection('Place');
+}
 
-	// fetch color info from the color collection based on the
-	// given color from the user model
+exports.setPlace = function( placemark ){
+	var collection = Alloy.createCollection("Place");
+	collection.fetch();
 	
-	Titanium.API.log( JSON.stringify( collection ) );
+	var places = collection.where({ placeId: placemark.place.id});
+	//Titanium.API.log( JSON.stringify( places ) );
 	
-	collection.where({ placeId: placemark.place.id});
-	
-	Titanium.API.log( JSON.stringify( collection ) );
-	
-	var place;
 	// open the color info window
-	if ( collection.at(0) ) {
-		Titanium.API.log( "Updating place:" + collection.at(0).get('name') );
-		place = collection.at( 0 );
+	if ( places[0] ) {
+		place = places[0];
 		place.set('lastViewed', new Date());
 	} else {	
-		var place = Alloy.createModel('place', {
+		var place = Alloy.createModel('Place', {
 			name:placemark.place.name, 
 			slug:placemark.place.slug,
 			lng:parseFloat( placemark.place.lng ),
