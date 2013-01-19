@@ -40,11 +40,11 @@ Ti.App.addEventListener('openLink',function(e){
 		nearbyPage.getView().navGroup = $.win.navGroup;
 		$.win.navGroup.open( nearbyPage.getView()) ;
 		
-		$.ds.button.hide();
+		$.win.ds.button.hide();
 		
-		currentView.addEventListener('close', function(e){
-			$.ds.button.show();
-			drawSideBar();
+		nearbyPage.getView().addEventListener('close', function(e){
+			$.win.ds.button.show();
+			$.win.drawSideBar();
 		});
 		
 	} else {

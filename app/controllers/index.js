@@ -104,11 +104,14 @@ function drawSideBar(){
 	$.ds.tableView.data = data;
 }
 
+exports.drawSideBar = drawSideBar;
 drawSideBar();
 
 var homeController = Alloy.createController("home");
 var currentView = homeController.getView();
+currentView.drawSideBar = drawSideBar
 currentView.navGroup = $.ds.nav;
+currentView.ds = $.ds; //need a reference to this to enable/disable button
 $.ds.innerwin.add(currentView);
 
 // Swap views on menu item click
