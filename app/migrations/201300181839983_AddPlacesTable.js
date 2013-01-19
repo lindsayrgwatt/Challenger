@@ -1,7 +1,7 @@
 migration.up = function(db) {
 	    db.createTable({
 		"columns": {
-			"placeId":"string",
+			"placeId":"string PRIMARY KEY",
 			"name":"string",
 			"lat":"float",
 			"lng":"float",
