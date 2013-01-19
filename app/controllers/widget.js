@@ -1,3 +1,4 @@
+
 var animateLeft = Ti.UI.createAnimation({
 	left : 250,
 	curve : Ti.UI.ANIMATION_CURVE_EASE_OUT,
@@ -12,22 +13,30 @@ var animateRight = Ti.UI.createAnimation({
 
 var touchStartX = 0;
 var touchStarted = false;
+var openPanel = false;
+
+
+/*
+$.innerwin.addEventListener('touchend', function(e) {
+	if (false) {
+		touchStarted = false;
+		if ($.win.left >= 150) {
+			$.win.animate(animateLeft);
+			hasSlided = true;
+		} else {
+			$.win.animate(animateRight);
+			hasSlided = false;
+		}
+	}
+});
+
+
 
 $.innerwin.addEventListener('touchstart', function(e) {
 	touchStartX = parseInt(e.x, 10);
 });
 
-$.innerwin.addEventListener('touchend', function(e) {
-	touchStarted = false;
-	if ($.win.left >= 150) {
-		$.win.animate(animateLeft);
-		hasSlided = true;
-	} else {
-		$.win.animate(animateRight);
-		hasSlided = false;
-	}
-});
-
+/*
 $.innerwin.addEventListener('touchmove', function(e) {
 	// TODO: Use convertPointToView when fixed in SDK.
 	//var coords = e.source.convertPointToView({x:e.x,y:e.y}, $.innerwin);
@@ -43,6 +52,7 @@ $.innerwin.addEventListener('touchmove', function(e) {
 		touchStarted = true;
 	}
 });
+*/
 
 $.button.addEventListener('singletap', function(e) {
 	$.toggleSlider();
