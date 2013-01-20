@@ -13,8 +13,8 @@ var rowHandle = function(evt){
 	$.win.navGroup.open(placePage.getView());
 };
 
-exports.setCategory = function( category ){	
-	category = category;
+exports.setCategory = function( newCategory ){	
+	category = newCategory;
 }
 
 $.placeTable.setFooterView( Alloy.createController('footerRow', {
@@ -50,9 +50,8 @@ function loadPlaces(){
 	    var speed = e.coords.speed;
 	    var timestamp = e.coords.timestamp;
 	    var altitudeAccuracy = e.coords.altitudeAccuracy;
-	
-		
-		var url = Alloy.CFG.serverUrl + "/publishers/" + Alloy.CFG.publisher +  "/publisher_categories/best-of-vancouver-2012/perspectives.json";
+			
+		var url = Alloy.CFG.serverUrl + "/publishers/" + Alloy.CFG.publisher +  "/publisher_categories/" + category + "/perspectives.json";		
 		
 		Ti.API.log( "info", "grabbing contents from: " + url);
 		
@@ -84,7 +83,12 @@ function loadPlaces(){
 	});
 }
 
-loadPlaces();
+$.win.addEventListener('open', function(e){
+	Ti.API.log( "Opening the thing: " + category);
+	loadPlaces();	
+});	
+
+
 
 var ptrCtrl = Alloy.createWidget('nl.fokkezb.pullToRefresh');
 ptrCtrl.init({

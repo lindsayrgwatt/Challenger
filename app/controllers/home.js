@@ -26,7 +26,6 @@ exports.refreshWindow =refreshWindow;
 refreshWindow();
 
 Ti.App.addEventListener('openLink',function(e){
-	Ti.API.info(JSON.stringify( e ));
     
     var UriParser = require("parseUri");
     Ti.API.info( e.URL );
@@ -34,9 +33,13 @@ Ti.App.addEventListener('openLink',function(e){
 
 	Ti.API.info(JSON.stringify( URI ));
 	
-	if (URI['realtive'] != ""){
+	if ( URI['host'] == "" || URI['host'] == "." ){
 		var nearbyPage = Alloy.createController('nearby');
-	    nearbyPage.setCategory( URI['relative'].split("/")[-1] );
+		var urlArray = URI['path'].split("/");
+		
+		Ti.API.info( "post-create, open the category:" + urlArray[ urlArray.length -1] );
+		
+	    nearbyPage.setCategory( urlArray[ urlArray.length -1] );
 		nearbyPage.getView().navGroup = $.win.navGroup;
 		$.win.navGroup.open( nearbyPage.getView()) ;
 		
