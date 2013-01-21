@@ -7,7 +7,7 @@ exports.definition = {
 			"lat":"float",
 			"lng":"float",
 			"googleMapUrl":"string",
-			"wishList":"boolean",
+			"wishlist":"boolean",
 			"memo":"string",
 			"slug":"string",
 			"lastViewed":"datetime",

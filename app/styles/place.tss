@@ -24,8 +24,10 @@
 	left: 0
 },
 "#callButton":{
-	left: 200
-},
-"#imagesViewHolder":{
+	left: 170
+},"#wishlistButton":{
+	left: 0,
+	top: 320
+},"#imagesViewHolder":{
 	left: 0
 }

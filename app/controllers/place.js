@@ -1,4 +1,5 @@
 var placeSlug;
+var place;
 
 function closeWindow() {
 	$.placeWin.remove();
@@ -12,6 +13,19 @@ function doHours(){
 
 function doCall(){
 	
+}
+
+function toggleWishlist(e){
+	Ti.API.info( "toggleWishlist" );
+	if ( place.get('wishlist') ){
+		$.wishlistButton.title = "Add to Wishlist";
+		place.set('wishlist', false);
+		place.save();
+	} else {
+		$.wishlistButton.title = "Remove from Wishlist";
+		place.set('wishlist', true);
+		place.save();
+	}
 }
 
 exports.placeSlug = function( newPlace ){	
@@ -30,7 +44,7 @@ exports.setPlace = function( placemark ){
 		place = places[0];
 		place.set('lastViewed', new Date());
 	} else {	
-		var place = Alloy.createModel('Place', {
+		place = Alloy.createModel('Place', {
 			name:placemark.place.name, 
 			slug:placemark.place.slug,
 			lng:parseFloat( placemark.place.lng ),
@@ -40,10 +54,16 @@ exports.setPlace = function( placemark ){
 			memo:placemark.memo, 
 			placeId:placemark.place.id,
 			lastViewed:(new Date()),
-			wishList:false
+			wishlist:false
 		});
 	}
 	place.save();
+	
+	if ( place.get('wishlist') ){
+		$.wishlistButton.title = "Remove from Wishlist";
+	} else {
+		$.wishlistButton.title = "Add to Wishlist";
+	}
 	
 	$.placeName.text = placemark.place.name;
 	

@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container navWindow">
+	<Window id='win' class="container navWindow">
 		<TableView id="placeTable">
 	    	
 	    </TableView>  

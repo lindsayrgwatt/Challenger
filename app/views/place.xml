@@ -13,6 +13,7 @@
         <Button id="hoursButton" onClick="doHours" title="Hours & Directions" />
             
         <Button id="callButton" onClick="doCall" title="Call" />
+        <Button id="wishlistButton" onClick="toggleWishlist" title="Add to Wishlist" />
 
 		<View id="imagesViewHolder"  />
     </Window>
