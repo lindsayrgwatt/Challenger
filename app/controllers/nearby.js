@@ -16,6 +16,10 @@ exports.setCategory = function( newCategory ){
 
 }
 
+exports.setSlug = function( newCategory ){	
+	categorySlug = newCategory;
+}
+
 $.placeTable.setFooterView( Alloy.createController('footerRow', {
 	title : 'Powered By: ',
 	image : "images/placeling-logo.png"

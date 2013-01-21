@@ -1,3 +1,4 @@
+var placeSlug;
 
 function closeWindow() {
 	$.placeWin.remove();
@@ -13,8 +14,8 @@ function doCall(){
 	
 }
 
-exports.setPlaceId = function( place_id ){
-	
+exports.placeSlug = function( newPlace ){	
+	placeSlug = newPlace;
 }
 
 exports.setPlace = function( placemark ){

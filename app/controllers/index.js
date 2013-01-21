@@ -82,6 +82,7 @@ function drawSideBar(){
 		section.add(Alloy.createController('menurow', {
 			title : category.get('name'),
 			customView : 'nearby',
+			slug: category.get('slug'),
 			image : "images/ic_search.png"
 		}).getView());
 	});
@@ -109,6 +110,7 @@ function drawSideBar(){
 		section.add(Alloy.createController('menurow', {
 			title : place.get('name'),
 			customView : 'place',
+			slug: place.get('slug'),
 			image : "images/ic_search.png"
 		}).getView());
 	});
@@ -132,16 +134,22 @@ $.ds.innerwin.add(currentView);
 // Swap views on menu item click
 $.ds.tableView.addEventListener('click', function selectRow(e) {
 	if (currentView.id != e.row.customView) {
-		currentView = Alloy.createController(e.row.customView).getView();
-		currentView.navGroup = $.ds.nav;
+		clickedController = Alloy.createController(e.row.customView);
+		view = clickedController.getView();
+		
+		if ( e.row.slug ){		
+			clickedController.slug = e.row.slug;		
+		}
+		
+		view.navGroup = $.ds.nav;
 		$.ds.button.hide();
 		
-		currentView.addEventListener('close', function(e){
+		view.addEventListener('close', function(e){
 			$.ds.button.show();
 			drawSideBar();
 		});
 		
-		$.ds.nav.open( currentView );
+		$.ds.nav.open( view );
 	}
 	$.ds.toggleSlider();
 });
