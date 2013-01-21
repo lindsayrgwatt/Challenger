@@ -73,8 +73,12 @@ function loadPlaces(){
 				var tableData = [];
 				places = placemarks;
 				placemarks.forEach( function(placemark) {			
-					var rowData = {title:placemark.place.name, className:'placeRow', touchEnabled:true, hasDetail:true, placemark: placemark};		
-					tableData.push( rowData );
+					//var rowData = {title:placemark.place.name, className:'placeRow', touchEnabled:true, hasDetail:true, placemark: placemark};		
+					tableData.push( Alloy.createController('placeRow', {
+						placemark : placemark,
+						latitude: latitude,
+						longitude: longitude
+					}).getView() );
 				});
 								
 				$.placeTable.setData( tableData );	

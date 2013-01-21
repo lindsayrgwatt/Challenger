@@ -1,0 +1,10 @@
+<Alloy>
+  <TableViewRow id="row">
+    <ImageView id="icon"/>
+    <View class="vgroup">
+      <Label id="title"/>
+      <Label id="address"/>
+      <Label id="distance"/>
+    </View>
+  </TableViewRow>
+</Alloy>
