@@ -1,5 +1,5 @@
 <Alloy>
-	<Window navBarHidden="true">
+	<Window id='win' class="navWindow">
 	    <!-- Note the ns attribute is used to change the default namespace. -->
 	    <View id="mapView" ns="Ti.Map" animate="true" regionFit="true" userLocation="true">
 	    	

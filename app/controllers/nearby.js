@@ -1,5 +1,6 @@
 
 var categorySlug = "all";
+var places;
 
 var rowHandle = function(evt){
     // Check for all of the possible names that clicksouce
@@ -11,12 +12,13 @@ var rowHandle = function(evt){
 	$.win.navGroup.open(placePage.getView());
 };
 
-exports.setCategory = function( newCategory ){	
-	categorySlug = newCategory;
-}
 
 exports.setSlug = function( newCategory ){	
 	categorySlug = newCategory;
+}
+
+exports.setPlaces = function( nplaces ){	
+	places = nplaces;
 }
 
 $.placeTable.setFooterView( Alloy.createController('footerRow', {
@@ -24,15 +26,22 @@ $.placeTable.setFooterView( Alloy.createController('footerRow', {
 	image : "images/placeling-logo.png"
 }).getView() ); 
 
-$.placeTable.setFooterTitle("test");
-
-
 $.placeTable.addEventListener('click', rowHandle);	
+
+var mapButton = Titanium.UI.createButton({title:"Map"});
+$.win.rightNavButton = mapButton;
+ 
+mapButton.addEventListener('click', function(e){
+	Ti.API.info("clicked on Map");
+	var mapController = Alloy.createController('map');
+	mapController.setPlaces( places );
+	mapController.getView().navGroup = $.win.navGroup;
+	$.win.navGroup.open( mapController.getView() );
+});
 
 function myLoaderCallback(widgetCallback) {
     // DO YOUR LOADING
     loadPlaces();
-    
     widgetCallback(true);
 }
 
@@ -63,7 +72,7 @@ function loadPlaces(){
 				var categoryRaw = result.publisher_category;
 				places = placemarks;
 				var tableData = [];
-				
+				places = placemarks;
 				placemarks.forEach( function(placemark) {			
 					var rowData = {title:placemark.place.name, className:'placeRow', touchEnabled:true, hasDetail:true, placemark: placemark};		
 					tableData.push( rowData );

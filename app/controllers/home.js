@@ -30,7 +30,7 @@ Ti.App.addEventListener('openLink',function(e){
 		var nearbyPage = Alloy.createController('nearby');
 		var urlArray = URI['path'].split("/");
 		
-	    nearbyPage.setCategory( urlArray[ urlArray.length -1] );
+	    nearbyPage.setSlug( urlArray[ urlArray.length -1] );
 		nearbyPage.getView().navGroup = $.win.navGroup;
 		$.win.navGroup.open( nearbyPage.getView()) ;
 		
