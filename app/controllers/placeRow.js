@@ -30,5 +30,5 @@ $.address.text = args.placemark.place.street_address || '';
 $.distance.text = haversine( args.latitude, args.longitude, args.placemark.place.lat, args.placemark.place.lng );
 $.row.customView = 'place';
 $.row.placemark = args.placemark;
-$.row.slug = args.placemark.place.slug || args.placemark.place.slug.id || '';
+$.row.slug = args.placemark.place.slug || '';
 $.row.customTitle = args.placemark.place.name;
