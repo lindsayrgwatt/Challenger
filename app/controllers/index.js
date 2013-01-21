@@ -70,9 +70,24 @@ function drawSideBar(){
 	
 	customView.add(customLabel);
 	
-	section.headerView = customView;
+	section.headerView = customView;	
+	
+	var categories = Alloy.createCollection('PublisherCategory');
+	categories.fetch();	
+	
+	//Ti.API.log( JSON.stringify( categories ) );
+	
+	categories.forEach( function( category ){
+		//Ti.API.log( category.get('name') );
+		section.add(Alloy.createController('menurow', {
+			title : category.get('name'),
+			customView : 'nearby',
+			image : "images/ic_search.png"
+		}).getView());
+	});
 	
 	data.push( section );
+	
 	var section = Ti.UI.createTableViewSection();
 	
 	var customView = Ti.UI.createView( headerViewOptions );

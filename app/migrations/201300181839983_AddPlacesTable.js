@@ -1,5 +1,5 @@
 migration.up = function(db) {
-	    db.createTable({
+    db.createTable({
 		"columns": {
 			"placeId":"string PRIMARY KEY",
 			"name":"string",
@@ -13,7 +13,7 @@ migration.up = function(db) {
 			"googleUrl":"string"
 		},
 		"adapter": {
-			"type": "placeId:string",
+			"type": "sql",
 			"collection_name": "Place"
 		}
     });

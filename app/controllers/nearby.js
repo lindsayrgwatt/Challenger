@@ -1,9 +1,7 @@
 
-var category;
+var categorySlug = "all";
 
 var rowHandle = function(evt){
-    Ti.API.info("Row " + evt.index + " clicked, source: " + evt.source + ", id: " + evt.rowData.placemark.place.name);
-
     // Check for all of the possible names that clicksouce
     // can report for the left button/view.
 
@@ -14,7 +12,8 @@ var rowHandle = function(evt){
 };
 
 exports.setCategory = function( newCategory ){	
-	category = newCategory;
+	categorySlug = newCategory;
+
 }
 
 $.placeTable.setFooterView( Alloy.createController('footerRow', {
@@ -51,25 +50,42 @@ function loadPlaces(){
 	    var timestamp = e.coords.timestamp;
 	    var altitudeAccuracy = e.coords.altitudeAccuracy;
 			
-		var url = Alloy.CFG.serverUrl + "/publishers/" + Alloy.CFG.publisher +  "/publisher_categories/" + category + "/perspectives.json";		
-		
-		Ti.API.log( "info", "grabbing contents from: " + url);
+		var url = Alloy.CFG.serverUrl + "/publishers/" + Alloy.CFG.publisher +  "/publisher_categories/" + categorySlug + "/perspectives.json";		
 		
 		var xhr = Ti.Network.createHTTPClient({
 			onload: function(e) {
 				var result = JSON.parse(this.responseText);
 				var placemarks = result.perspectives;
+				
+				var categoryRaw = result.publisher_category;
 				places = placemarks;
 				var tableData = [];
 				
-				for (i in placemarks){
-					var placemark = placemarks[i];					
-					var rowData = {title:placemark.place.name, className:'placeRow', touchEnabled:true, hasDetail:true, placemark: placemark};
-					
+				placemarks.forEach( function(placemark) {			
+					var rowData = {title:placemark.place.name, className:'placeRow', touchEnabled:true, hasDetail:true, placemark: placemark};		
 					tableData.push( rowData );
-				}				
+				});
+								
 				$.placeTable.setData( tableData );	
 				
+				var collection = Alloy.createCollection("PublisherCategory");
+				collection.fetch();
+				
+				var categories = collection.where({ slug: categoryRaw.slug});
+				
+				var category;
+				// open the color info window
+				if ( categories[0] ) {
+					category = categories[0];
+					category.set('lastViewed', new Date());
+				} else {	
+					category = Alloy.createModel('PublisherCategory', {
+						name:categoryRaw.name, 
+						slug:categoryRaw.slug,
+						lastViewed:(new Date())
+					});
+				}
+				category.save();
 				
 			},
 			onerror: function(e) {	
@@ -84,7 +100,6 @@ function loadPlaces(){
 }
 
 $.win.addEventListener('open', function(e){
-	Ti.API.log( "Opening the thing: " + category);
 	loadPlaces();	
 });	
 
