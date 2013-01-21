@@ -77,7 +77,7 @@ function drawSideBar(){
 	
 	//Ti.API.log( JSON.stringify( categories ) );
 	
-	categories.forEach( function( category ){
+	categories.first(5).forEach( function( category ){
 		//Ti.API.log( category.get('name') );
 		section.add(Alloy.createController('menurow', {
 			title : category.get('name'),
