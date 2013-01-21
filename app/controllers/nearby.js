@@ -32,7 +32,6 @@ var mapButton = Titanium.UI.createButton({title:"Map"});
 $.win.rightNavButton = mapButton;
  
 mapButton.addEventListener('click', function(e){
-	Ti.API.info("clicked on Map");
 	var mapController = Alloy.createController('map');
 	mapController.setPlaces( places );
 	mapController.getView().navGroup = $.win.navGroup;
