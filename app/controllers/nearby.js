@@ -13,7 +13,6 @@ var rowHandle = function(evt){
 
 exports.setCategory = function( newCategory ){	
 	categorySlug = newCategory;
-
 }
 
 exports.setSlug = function( newCategory ){	

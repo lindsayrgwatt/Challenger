@@ -28,8 +28,28 @@ function toggleWishlist(e){
 	}
 }
 
-exports.placeSlug = function( newPlace ){	
-	placeSlug = newPlace;
+exports.setSlug = function( slug ){	
+	Titanium.API.log( "setting slug: " + slug );
+	placeSlug = slug;
+	
+	var collection = Alloy.createCollection("Place");
+	collection.fetch();
+	
+	var places = collection.where({ slug: slug });
+	Titanium.API.log( JSON.stringify( places ) );
+	
+	// open the color info window
+	if ( places[0] ) {
+		place = places[0];
+	
+		$.placeName.text = place.get('name');
+		
+		$.mapImage.image = place.get('googleMapUrl').replace("size=100x100", "size="+$.mapImage.width+"x"+$.mapImage.height);
+		
+		$.streetAddress.text = place.get('street_address');
+		$.placeTags.text = place.get('tags');
+		$.placeMemo.text = place.get('memo');
+	}
 }
 
 exports.setPlace = function( placemark ){
@@ -50,6 +70,8 @@ exports.setPlace = function( placemark ){
 			lng:parseFloat( placemark.place.lng ),
 			lat:parseFloat( placemark.place.lat ),
 			googleMapUrl:placemark.place.map_url,
+			streetAddress:placemark.place.street_address,
+			tags:placemark.tags.join(","),
 			googleUrl:placemark.place.google_url,
 			memo:placemark.memo, 
 			placeId:placemark.place.id,
@@ -74,7 +96,4 @@ exports.setPlace = function( placemark ){
 	$.placeMemo.text = placemark.memo;
 	
 	$.imagesViewHolder.height = 50;
-	
-	
-	
 }

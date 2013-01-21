@@ -5,6 +5,8 @@ exports.definition = {
 			"placeId":"string",
 			"name":"string",
 			"lat":"float",
+			"tags":"string",
+			"streetAddress":"string",
 			"lng":"float",
 			"googleMapUrl":"string",
 			"wishlist":"boolean",

@@ -136,9 +136,9 @@ $.ds.tableView.addEventListener('click', function selectRow(e) {
 	if (currentView.id != e.row.customView) {
 		clickedController = Alloy.createController(e.row.customView);
 		view = clickedController.getView();
-		
+		Ti.API.info("clicked on slug:" + e.row.slug);
 		if ( e.row.slug ){		
-			clickedController.slug = e.row.slug;		
+			clickedController.setSlug( e.row.slug );		
 		}
 		
 		view.navGroup = $.ds.nav;

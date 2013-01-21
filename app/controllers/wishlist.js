@@ -35,7 +35,7 @@ $.placeTable.data = data;
 $.placeTable.addEventListener('click', function selectRow(e) {
 	clickedController = Alloy.createController(e.row.customView);
 	view = clickedController.getView();
-	clickedController.slug = e.row.slug;		
+	clickedController.setSlug( e.row.slug );		
 	
 	$.win.navGroup.open( view );
 });

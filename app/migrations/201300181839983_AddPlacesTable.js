@@ -3,8 +3,10 @@ migration.up = function(db) {
 		"columns": {
 			"placeId":"string PRIMARY KEY",
 			"name":"string",
+			"streetAddress":"string",
 			"lat":"float",
 			"lng":"float",
+			"tags":"string",
 			"googleMapUrl":"string",
 			"wishlist":"boolean",
 			"memo":"string",
