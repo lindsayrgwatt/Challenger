@@ -2,6 +2,8 @@
 var categorySlug = "all";
 var places;
 
+$.placeTable.headerView = Titanium.UI.createWebView( { height:'0', html: "<html><body>blah</body></html>" } );
+
 var rowHandle = function(evt){
     // Check for all of the possible names that clicksouce
     // can report for the left button/view.
@@ -11,7 +13,6 @@ var rowHandle = function(evt){
     placePage.setPlace( placemark );
 	$.win.navGroup.open(placePage.getView());
 };
-
 
 exports.setSlug = function( newCategory ){	
 	categorySlug = newCategory;
@@ -71,6 +72,18 @@ function loadPlaces(){
 				var categoryRaw = result.publisher_category;
 				places = placemarks;
 				var tableData = [];
+				
+				if ( categoryRaw ){
+					$.placeTable.headerView.setHtml( categoryRaw.list_liquid_html );
+
+					var height =  $.placeTable.headerView.evalJS("document.height") ;
+					Ti.API.info( "Calculating height of headerview: " + height );
+					if (height < 10) height = 0;
+					$.placeTable.headerView.touchEnabled = false;
+					$.placeTable.headerView.height = height;
+				} else {
+					$.placeTable.headerView.height = 0;	
+				}
 				places = placemarks;
 				placemarks.forEach( function(placemark) {			
 					//var rowData = {title:placemark.place.name, className:'placeRow', touchEnabled:true, hasDetail:true, placemark: placemark};		
@@ -115,14 +128,7 @@ function loadPlaces(){
 }
 
 $.win.addEventListener('open', function(e){
-	loadPlaces();	
+	loadPlaces();
 });	
 
-
-
-var ptrCtrl = Alloy.createWidget('nl.fokkezb.pullToRefresh');
-ptrCtrl.init({
-    table: $.placeTable,
-    loader: myLoaderCallback
-});
 
