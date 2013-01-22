@@ -5,7 +5,7 @@ function refreshWindow( placemark ){
 	var xhr = Ti.Network.createHTTPClient({
 		onload: function(e) {
 			var result = this.responseText;
-			$.webView.setHtml( result )	
+			$.webView.setHtml( result );	
 		},
 		onerror: function(e) {	
 			alert("Error:"+JSON.stringify(e));
