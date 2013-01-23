@@ -1,4 +1,12 @@
 
+
+var backButton = Titanium.UI.createButton({backgroundImage:"/images/NavBar_Back_Static.png", height:29,
+			width:36});
+backButton.addEventListener('click', function() {
+	$.win.navGroup.close( $.win );
+});
+$.win.leftNavButton = backButton;
+
 var section = Ti.UI.createTableViewSection();
 
 var customView = Ti.UI.createView( );
