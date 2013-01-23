@@ -3,7 +3,7 @@
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 
-	"os:ios": {"serverUrl":"http://localhost:3000"}, 
+	"os:ios": {"serverUrl":"https://api.placeling.com"}, 
 	"os:android": {"serverUrl":"http://10.0.0.3:3000"}, 
 	"dependencies": {
 		"nl.fokkezb.pullToRefresh":"1.1"
