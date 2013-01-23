@@ -4,23 +4,35 @@
 "#topline":{
 	top:5,
 	width:Ti.UI.SIZE,
-	height: 5
 },
 "#placeName":{
-	font:{ fontSize:15, fontFamily:'nevis', fontWeight:'bold'},
+	font:{ fontSize:16, fontFamily:'nevis', fontWeight:'bold'},
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
 	
 },".sectionLine":{
 	image:"/images/SectionTitleUnderline.png"
 },"#streetAddress":{
-	
+	font:{ fontSize:13, fontFamily:'nevis'},
+	width:280,
+	height:'auto'
+},
+"#imageViewer":{
+	width:282,
+	height:132,
+	top:5
 },
 "#twitterView":{
-	width:280,
-	height:60,
-	image:"/images/TwitterContainer.png"
+	top:20,
+	width:268,
+	height:41,
+	backgroundImage:"/images/TwitterContainer.png"
+},
+"#twitterPost":{
+	right:20,
+	font:{ fontSize:10, fontFamily:'nevis'}
 },"#mapImage":{
+	top:10,
 	width: 280,
 	height: 200
 },
@@ -28,15 +40,19 @@
 	height:'auto',
 	width: 280,
 	left: 20,
-	font:{ fontSize:12, fontFamily:'nevis'}
+	font:{ fontSize:12, fontFamily:'nevis'},
+	top:5
 },
 "#buttonHolder":{
 	layout:'horizontal',
-	left: 20	
+	left: 10,
+	top: 10,
+	height: "25"
 },
 "#hoursButton":{
 	backgroundImage:'/images/HoursButton_Static.png',
 	height:25,
+	left:10,
 	width:122
 },
 "#callButton":{
@@ -47,5 +63,10 @@
 "#wishlistButton":{
 	backgroundImage:'/images/WishlistButton_Static.png',
 	height: 25,
+	left:10,
 	width: 75
+},
+"#tweetText":{
+	font:{ fontSize:12, fontFamily:'nevis'},
+	left: 40
 }

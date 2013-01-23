@@ -13,7 +13,8 @@ exports.definition = {
 			"memo":"string",
 			"slug":"string",
 			"lastViewed":"datetime",
-			"googleUrl":"string"
+			"googleUrl":"string",
+			"imageUrl":"string"
 		},
 		"adapter": {
 			"type": "sql",

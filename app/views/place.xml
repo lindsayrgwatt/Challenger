@@ -6,21 +6,21 @@
 	        <ImageView id='bottomline' class='sectionLine'/>
 	        <Label id="streetAddress">Street Address</Label>
 	       
-	       	<ImageView id="imageViewer" /> 
+	       	<ImageView id="imageViewer" class="borderedImage" /> 
 	        
 	        <Label id="placeMemo">Place memo</Label>
 	        
 	        <View id="twitterView">
 	        	<Label id="tweetText"/>
 	        </View>
-	        
-	        <View id="buttonHolder" >
+	        <Label id="twitterPost"/>
+
+			<View id="buttonHolder" >
 		        <Button id="callButton" onClick="doCall" />
 		        <Button id="hoursButton" onClick="doHours" />
 		        <Button id="wishlistButton" onClick="toggleWishlist" />
-	        </View>    
-	        
-			<ImageView id="mapImage" />    
+	        </View>      
+	        <ImageView id="mapImage" class="borderedImage" />  
 		</ScrollView>
 		
     </Window>

@@ -40,16 +40,35 @@ function toggleWishlist(e){
 }
 
 function drawPlace( place ){
+	Titanium.API.info( JSON.stringify( place ) );
 	$.placeName.text = place.get('name').toUpperCase();
 	
 	$.mapImage.image = place.get('googleMapUrl').replace("size=100x100", "size="+$.mapImage.width+"x"+$.mapImage.height);
 	$.streetAddress.text = place.get('streetAddress');
 	$.placeMemo.text = place.get('memo');
+	
+	var rand = Math.floor((Math.random()*3)+1);
+	if (rand ==1 ){
+		$.tweetText.text = "Check out our weekly specials!";
+	} else if (rand ==2 ){
+		$.tweetText.text = "#ff to @placeling for making an awesome app!";
+	} else if (rand ==3 ){
+		$.tweetText.text = "We just got featured in SF Indie";
+	}
+	$.tweetText.text  = '"' + $.tweetText.text + '"';
+	$.twitterPost.text = "JAN 24|2013";
+	
+	if ( place.get('imageUrl') ){
+		$.imageViewer.image = place.get('imageUrl');
+	} else {
+		$.imageViewer.height = 0;
+	}
+	
+	
 }
 
 
 exports.setSlug = function( slug ){	
-	Titanium.API.log( "setting slug: " + slug );
 	placeSlug = slug;
 	
 	var collection = Alloy.createCollection("Place");
@@ -92,6 +111,12 @@ exports.setSlug = function( slug ){
 					lastViewed:(new Date()),
 					wishlist:false
 				});
+				
+				if (placemark.photos.length > 0){
+					var photo = placemark.photos[0];
+					place.set('imageUrl', photo.wide_url);
+				}
+				
 				place.save();
 						
 				drawPlace( place );
@@ -135,7 +160,12 @@ function setPlace( placemark ){
 			lastViewed:(new Date()),
 			wishlist:false
 		});
+		if (placemark.photos.length > 0){
+			var photo = placemark.photos[0];
+			place.set('imageUrl', photo.wide_url);
+		}
 	}
+	
 	place.save();
 	
 	drawPlace( place );

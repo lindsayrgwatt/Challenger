@@ -2,4 +2,9 @@
 	barImage: '/images/NavBarBG.png',
 	titleImage:'/images/SFIndieNavBarLogo.png',
 	barColor:'#f2f2f2'
+},
+".borderedImage":{
+	borderColor: '#ffffff',
+    borderRadius: 10,
+    borderWidth: 4,
 }
