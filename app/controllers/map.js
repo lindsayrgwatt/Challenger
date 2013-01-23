@@ -1,4 +1,14 @@
 
+
+
+var backButton = Titanium.UI.createButton({backgroundImage:"/images/NavBar_Back_Static.png", height:29,
+			width:36});
+backButton.addEventListener('click', function() {
+	$.win.navGroup.close( $.win );
+});
+$.win.leftNavButton = backButton;
+
+
 var pinhandle = function(evt){
     Ti.API.info("Annotation " + evt.title + " clicked, source: " + evt.clicksource + ", id: " + evt.annotation.myid);
 
@@ -10,6 +20,7 @@ var pinhandle = function(evt){
         var placePage = Alloy.createController('place');
         var placemark = places[ evt.annotation.myid ];
         placePage.setPlace( placemark );
+        placePage.getView().navGroup = $.win.navGroup;
 		$.win.navGroup.open(placePage.getView());
     }
 };
@@ -40,6 +51,22 @@ exports.setPlaces = function( nplaces ){
 	places = nplaces;
 }
 
+Titanium.Geolocation.getCurrentPosition(function(e) {
+    if (e.error) {
+        alert('HFL cannot get your current location');
+        return;
+    }
+ 
+    var longitude = e.coords.longitude;
+    var latitude = e.coords.latitude;
+	
+    var region = {latitude:latitude,longitude:longitude,latitudeDelta:0.010, longitudeDelta:0.018};
+
+	$.mapView.setRegion( region );
+	
+	loadPlaces();
+});
+	
 
 function loadPlaces(){
 	

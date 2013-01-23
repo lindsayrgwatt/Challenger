@@ -11,6 +11,7 @@ var rowHandle = function(evt){
     var placePage = Alloy.createController('place');
     var placemark = evt.rowData.placemark;
     placePage.setPlace( placemark );
+    placePage.getView().navGroup = $.win.navGroup;
 	$.win.navGroup.open(placePage.getView());
 };
 
@@ -29,7 +30,15 @@ $.placeTable.setFooterView( Alloy.createController('footerRow', {
 
 $.placeTable.addEventListener('click', rowHandle);	
 
-var mapButton = Titanium.UI.createButton({title:"Map"});
+var backButton = Titanium.UI.createButton({backgroundImage:"/images/NavBar_Home_Static.png", height:29,
+			width:36});
+backButton.addEventListener('click', function() {
+	$.win.navGroup.close( $.win );
+});
+$.win.leftNavButton = backButton;
+
+var mapButton = Titanium.UI.createButton({backgroundImage:"/images/NavBar_Map_Static.png", height:29,
+			width:36});
 $.win.rightNavButton = mapButton;
  
 mapButton.addEventListener('click', function(e){

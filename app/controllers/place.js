@@ -1,6 +1,19 @@
 var placeSlug;
 var place;
 
+
+
+var mapButton = Titanium.UI.createButton({backgroundImage:"/images/NavBar_Share_Static.png", height:29,
+			width:36});
+$.win.rightNavButton = mapButton;
+
+var backButton = Titanium.UI.createButton({backgroundImage:"/images/NavBar_Back_Static.png", height:29,
+			width:36});
+backButton.addEventListener('click', function() {
+	$.win.navGroup.close( $.win );
+});
+$.win.leftNavButton = backButton;
+
 function closeWindow() {
 	$.placeWin.remove();
 	

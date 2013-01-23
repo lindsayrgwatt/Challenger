@@ -1,5 +1,5 @@
 ".navWindow": {
 	barImage: '/images/NavBarBG.png',
 	titleImage:'/images/SFIndieNavBarLogo.png',
-	barColor:'transparent'
+	barColor:'#f2f2f2'
 }
