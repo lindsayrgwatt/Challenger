@@ -35,6 +35,7 @@ function drawPlaces( places ){
             latitude:placemark.place.lat,
             longitude:placemark.place.lng,
             title:placemark.place.name,
+            image:"/images/PlaceMarker.png",
             subtitle:placemark.place.street_address,
             pincolor: Titanium.Map.ANNOTATION_RED,
             rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,	 
@@ -42,7 +43,6 @@ function drawPlaces( places ){
             animate:true
         });
         pinView.addEventListener( 'click', pinhandle );
-        
         $.mapView.addAnnotation( pinView );
 	}		
 }
