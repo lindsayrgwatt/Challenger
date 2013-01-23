@@ -92,7 +92,7 @@ function loadPlaces(){
 
 					$.placeTable.headerView.reload();
 					var height =  $.placeTable.headerView.evalJS("document.height") ;
-					Ti.API.info( "Calculating height of headerview: " + height );
+					
 					if (height < 10) height = 0;
 					$.placeTable.headerView.touchEnabled = false;
 					$.placeTable.headerView.setHeight(Ti.UI.SIZE);
@@ -111,24 +111,26 @@ function loadPlaces(){
 								
 				$.placeTable.setData( tableData );	
 				
-				var collection = Alloy.createCollection("PublisherCategory");
-				collection.fetch();
-				
-				var categories = collection.where({ slug: categoryRaw.slug});
-				
-				var category;
-				// open the color info window
-				if ( categories[0] ) {
-					category = categories[0];
-					category.set('lastViewed', new Date());
-				} else {	
-					category = Alloy.createModel('PublisherCategory', {
-						name:categoryRaw.name, 
-						slug:categoryRaw.slug,
-						lastViewed:(new Date())
-					});
+				if ( categoryRaw ){
+					var collection = Alloy.createCollection("PublisherCategory");
+					collection.fetch();
+					
+					var categories = collection.where({ slug: categoryRaw.slug});
+					
+					var category;
+					// open the color info window
+					if ( categories[0] ) {
+						category = categories[0];
+						category.set('lastViewed', new Date());
+					} else {	
+						category = Alloy.createModel('PublisherCategory', {
+							name:categoryRaw.name, 
+							slug:categoryRaw.slug,
+							lastViewed:(new Date())
+						});
+					}
+					category.save();
 				}
-				category.save();
 				
 			},
 			onerror: function(e) {	

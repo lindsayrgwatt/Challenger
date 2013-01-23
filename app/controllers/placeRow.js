@@ -23,17 +23,39 @@ function haversine( lat1, lng1, lat2, lng2){
 }
 
 var args = arguments[0] || {};
-var dist = haversine( args.latitude, args.longitude, args.placemark.place.lat, args.placemark.place.lng );
-$.title.text = args.placemark.place.name || '';
 
-if ( args.placemark.place.street_address ){
-	$.address.text = args.placemark.place.street_address +  " | " + dist;
+if (args.placemark){
+	var dist = haversine( args.latitude, args.longitude, args.placemark.place.lat, args.placemark.place.lng );
+	$.title.text = args.placemark.place.name || '';
+	
+	if ( args.placemark.place.street_address ){
+		$.address.text = args.placemark.place.street_address +  " | " + dist;
+	} else {
+		$.address.text = dist;	
+	}
+	
+	$.row.customView = 'place';
+	$.row.placemark = args.placemark;
+	$.row.slug = args.placemark.place.slug || '';
+	$.row.customTitle = args.placemark.place.name;
+	$.tags.text = args.placemark.tags.join(',') || '';
 } else {
-	$.address.text = dist;	
+	var place = args.place;
+	
+	var dist = haversine( args.latitude, args.longitude, place.get('lat'), place.get('lng') );
+	
+	$.title.text = place.get('name') ;
+	
+	if ( place.get('streetAddress') ){
+		$.address.text = place.get('streetAddress') +  " | " + dist;
+	} else {
+		$.address.text = dist;	
+	}
+	
+	$.row.customView = 'place';
+	$.row.slug = place.get('slug') || '';
+	$.row.customTitle = place.get('name');
+	$.tags.text = place.get('tags');
 }
 
-$.row.customView = 'place';
-$.row.placemark = args.placemark;
-$.row.slug = args.placemark.place.slug || '';
-$.row.customTitle = args.placemark.place.name;
-$.tags.text = args.placemark.tags.join(',') || '';
+
