@@ -31,30 +31,20 @@ function doCall(){
 function toggleWishlist(e){
 	Ti.API.info( "toggleWishlist" );
 	if ( place.get('wishlist') ){
-		$.wishlistButton.title = "Add to Wishlist";
 		place.set('wishlist', false);
 		place.save();
 	} else {
-		$.wishlistButton.title = "Remove from Wishlist";
 		place.set('wishlist', true);
 		place.save();
 	}
 }
 
 function drawPlace( place ){
-	if ( place.get('wishlist') ){
-		$.wishlistButton.title = "Remove from Wishlist";
-	} else {
-		$.wishlistButton.title = "Add to Wishlist";
-	}
-	
-	$.placeName.text = place.get('name');
+	$.placeName.text = place.get('name').toUpperCase();
 	
 	$.mapImage.image = place.get('googleMapUrl').replace("size=100x100", "size="+$.mapImage.width+"x"+$.mapImage.height);
 	$.streetAddress.text = place.get('streetAddress');
 	$.placeMemo.text = place.get('memo');
-	
-	$.imagesViewHolder.height = 50;
 }
 
 

@@ -1,33 +1,51 @@
+"#scrollView":{
+	layout:'vertical'
+},
+"#topline":{
+	top:5,
+	width:Ti.UI.SIZE,
+	height: 5
+},
 "#placeName":{
-	top:10,
+	font:{ fontSize:15, fontFamily:'nevis', fontWeight:'bold'},
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE
+	height: Ti.UI.SIZE,
+	
+},".sectionLine":{
+	image:"/images/SectionTitleUnderline.png"
+},"#streetAddress":{
+	
 },
-"#streetAddress":{
-	top: 30,
-	left: 0
-},
-"#placeTags":{
-	top: 50,
-	left: 0
-},
-"#mapImage":{
-	top: 70,
-	width: 320,
+"#twitterView":{
+	width:280,
+	height:60,
+	image:"/images/TwitterContainer.png"
+},"#mapImage":{
+	width: 280,
 	height: 200
 },
 "#placeMemo":{
-	left: 0,
-	top: 300	
+	height:'auto',
+	width: 280,
+	left: 20,
+	font:{ fontSize:12, fontFamily:'nevis'}
+},
+"#buttonHolder":{
+	layout:'horizontal',
+	left: 20	
 },
 "#hoursButton":{
-	left: 0
+	backgroundImage:'/images/HoursButton_Static.png',
+	height:25,
+	width:122
 },
 "#callButton":{
-	left: 170
-},"#wishlistButton":{
-	left: 0,
-	top: 320
-},"#imagesViewHolder":{
-	left: 0
+	backgroundImage:'/images/CallButton_Static.png',
+	height:25,
+	width:72
+},
+"#wishlistButton":{
+	backgroundImage:'/images/WishlistButton_Static.png',
+	height: 25,
+	width: 75
 }

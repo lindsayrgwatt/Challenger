@@ -1,22 +1,27 @@
 <Alloy>
 	<Window id="win" class="container navWindow">
-
-		<View id='topline' class='sectionLine'/>
-        <Label id="placeName">Place Name</Label>
-        <View id='bottomline' class='sectionLine'/>
-        <Label id="streetAddress">Street Address</Label>
-       
-       	<ImageView id="imageViewer"  /> 
-        
-        <Label id="placeMemo">Place memo</Label>
-        
-        <View id="twitterView"/>
-        
-        <Button id="callButton" onClick="doCall" title="Call" />
-        <Button id="hoursButton" onClick="doHours" title="Hours & Directions" />
-        <Button id="wishlistButton" onClick="toggleWishlist" />    
-        
-		<ImageView id="mapImage" />    
+		<ScrollView id='scrollView'>
+			<ImageView id='topline' class='sectionLine'/>
+	        <Label id="placeName">Place Name</Label>
+	        <ImageView id='bottomline' class='sectionLine'/>
+	        <Label id="streetAddress">Street Address</Label>
+	       
+	       	<ImageView id="imageViewer" /> 
+	        
+	        <Label id="placeMemo">Place memo</Label>
+	        
+	        <View id="twitterView">
+	        	<Label id="tweetText"/>
+	        </View>
+	        
+	        <View id="buttonHolder" >
+		        <Button id="callButton" onClick="doCall" />
+		        <Button id="hoursButton" onClick="doHours" />
+		        <Button id="wishlistButton" onClick="toggleWishlist" />
+	        </View>    
+	        
+			<ImageView id="mapImage" />    
+		</ScrollView>
 		
     </Window>
 </Alloy>
