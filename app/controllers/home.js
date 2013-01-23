@@ -27,16 +27,30 @@ Ti.App.addEventListener('openLink',function(e){
     var URI = UriParser.parseUri( e.URL );
 	
 	if ( URI['host'] == "" || URI['host'] == "." ){
-		var nearbyPage = Alloy.createController('nearby');
+		var newPage;
 		var urlArray = URI['path'].split("/");
+		if (urlArray[0] == ""){
+			urlArray.splice(0,1);
+		}
 		
-	    nearbyPage.setSlug( urlArray[ urlArray.length -1] );
-		nearbyPage.getView().navGroup = $.win.navGroup;
-		$.win.navGroup.open( nearbyPage.getView()) ;
+		if (urlArray[0].toLowerCase() == "category"){
+			newPage = Alloy.createController('nearby');
+			newPage.setSlug( urlArray[ urlArray.length -1] );	
+		} else if (urlArray[0].toLowerCase() == "place" || urlArray[0].toLowerCase() == "places") {
+			newPage = Alloy.createController('place');
+			newPage.setSlug( urlArray[ urlArray.length -1] );	
+		} else if ( urlArray[0].toLowerCase() == "nearby" ){
+			newPage = Alloy.createController('nearby');
+		} else if ( urlArray[0].toLowerCase() == "wishlist"){
+			newPage = Alloy.createController('wishlist');	
+		}
+		
+		newPage.getView().navGroup = $.win.navGroup;
+		$.win.navGroup.open( newPage.getView()) ;
 		
 		$.win.ds.button.hide();
 		
-		nearbyPage.getView().addEventListener('close', function(e){
+		newPage.getView().addEventListener('close', function(e){
 			$.win.ds.button.show();
 			$.win.drawSideBar();
 		});
