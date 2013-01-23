@@ -15,20 +15,25 @@ function haversine( lat1, lng1, lat2, lng2){
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	var d = R * c;
 	
-	if (d < 0.5){
+	if (d < 1){
 		return Math.round( d*1000 ) + "m";
 	} else {
-		return Math.round(d/10)*10 +"km";
+		return Math.round(d*10.0)/10.0 +"km";
 	}
 }
 
 var args = arguments[0] || {};
-$.icon.image = args.placemark.place.thumb_url;
+var dist = haversine( args.latitude, args.longitude, args.placemark.place.lat, args.placemark.place.lng );
 $.title.text = args.placemark.place.name || '';
-$.address.text = args.placemark.place.street_address || '';
 
-$.distance.text = haversine( args.latitude, args.longitude, args.placemark.place.lat, args.placemark.place.lng );
+if ( args.placemark.place.street_address ){
+	$.address.text = args.placemark.place.street_address +  " | " + dist;
+} else {
+	$.address.text = dist;	
+}
+
 $.row.customView = 'place';
 $.row.placemark = args.placemark;
 $.row.slug = args.placemark.place.slug || '';
 $.row.customTitle = args.placemark.place.name;
+$.tags.text = args.placemark.tags.join(',') || '';

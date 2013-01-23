@@ -1,40 +1,27 @@
 "Label": {
   color: "#666",
   font: {
-    fontSize: "16"
+    fontSize: "16",
+    fontWeight: "bold"
   }
-},
-".vgroup": {
-  layout: "vertical",
-  height: Ti.UI.SIZE
 },
 "#row": {
-  selectedBackgroundColor : "#666",
   selectedColor: 'white',
-  backgroundGradient : {
-    type : "linear",
-    startPoint : {
-      x : "0%",
-      y : "0%"
-    },
-    endPoint : {
-      x : "0%",
-      y : "100%"
-    },
-    colors : [{
-      color : "#F9F9F9",
-      offset : "0.0"
-    },
-    {
-      color : "#EEE",
-      offset : "1.0"
-    }]
-  }
-},
-"#icon": {
-  width: "38dp",
-  left: "5dp"
+  backgroundImage:"/images/PhotoTitleContainer.png",
+  layout: "vertical",
+  hasChild:true
 },
 "#title": {
-  left: "48dp"
+  left: "12"
+},"#address":{
+	left: "12",
+	font: {
+		fontSize: "12"
+	}
+},"#tags":{
+	left: "12",
+	color:"orange",
+	font: {
+		fontSize: "11"
+	}
 }
