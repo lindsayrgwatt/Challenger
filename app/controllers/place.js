@@ -29,7 +29,6 @@ function doCall(){
 }
 
 function toggleWishlist(e){
-	Ti.API.info( "toggleWishlist" );
 	if ( place.get('wishlist') ){
 		place.set('wishlist', false);
 		place.save();
@@ -80,19 +79,14 @@ exports.setSlug = function( slug ){
 	if ( places[0] ) {
 		place = places[0];
 	
-		$.placeName.text = place.get('name');
-		
-		$.mapImage.image = place.get('googleMapUrl').replace("size=100x100", "size="+$.mapImage.width+"x"+$.mapImage.height);
-		
-		$.streetAddress.text = place.get('street_address');
-		$.placeMemo.text = place.get('memo');
+		drawPlace( place );
 	} else {
 		var url = Alloy.CFG.serverUrl + "/places/" + slug +  ".json?newcall=true&rf=" + Alloy.CFG.publisher		
 		
 		var xhr = Ti.Network.createHTTPClient({
 			onload: function(e) {
 				var result = JSON.parse(this.responseText);
-				Ti.API.info( JSON.stringify( result ) );
+				
 				var placemark = result.place.referring_perspectives[0];
 				
 				var rPlace = result.place;
