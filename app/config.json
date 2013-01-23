@@ -1,5 +1,5 @@
 {
-	"global": {"theme":"default", "publisher":"georgiastraight"}, 
+	"global": {"theme":"default", "publisher":"sfindie"}, 
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 
