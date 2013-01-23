@@ -3,7 +3,7 @@ var categorySlug = "all";
 var categoryName;
 var places;
 
-$.placeTable.headerView = Titanium.UI.createWebView( { height:8, html: "<html><body>blah</body></html>" } );
+$.placeTable.headerView = Titanium.UI.createWebView( );
 
 var rowHandle = function(evt){
     // Check for all of the possible names that clicksouce
@@ -95,7 +95,7 @@ function loadPlaces(){
 					Ti.API.info( "Calculating height of headerview: " + height );
 					if (height < 10) height = 0;
 					$.placeTable.headerView.touchEnabled = false;
-					$.placeTable.headerView.height = height;
+					$.placeTable.headerView.setHeight(Ti.UI.SIZE);
 				} else {
 					$.placeTable.headerView.height = 0;	
 				}
