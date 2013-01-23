@@ -8,7 +8,6 @@ backButton.addEventListener('click', function() {
 });
 $.win.leftNavButton = backButton;
 
-
 var pinhandle = function(evt){
     Ti.API.info("Annotation " + evt.title + " clicked, source: " + evt.clicksource + ", id: " + evt.annotation.myid);
 
@@ -67,6 +66,14 @@ Titanium.Geolocation.getCurrentPosition(function(e) {
 	loadPlaces();
 });
 	
+$.titleBanner.hide();
+
+$.win.addEventListener('open', function(){
+	if ( $.win.categoryName ){
+		$.titleBanner.show();
+		$.titleBanner.text = $.win.categoryName.toUpperCase();
+	} 
+});
 
 function loadPlaces(){
 	
@@ -85,8 +92,6 @@ function loadPlaces(){
 	    var timestamp = e.coords.timestamp;
 	    var altitudeAccuracy = e.coords.altitudeAccuracy;
 	    
-	    Ti.API.info( JSON.stringify(e.coords));
-	    
 	    var region = {latitude:latitude,longitude:longitude,latitudeDelta:0.010, longitudeDelta:0.018};
 	
 		$.mapView.setRegion( region );
@@ -97,8 +102,6 @@ function loadPlaces(){
 			drawPlaces( places );
 			return;
 		}
-	
-		Ti.API.log( "info", "grabbing contents from: " + url);
 		
 		var xhr = Ti.Network.createHTTPClient({
 			onload: function(e) {

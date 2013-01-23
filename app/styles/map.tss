@@ -1,6 +1,10 @@
 ".container": {
 	backgroundColor: "white"
 },
-".headerView": {
-	
+"#titleBanner": {
+	top: 10,
+	height:40,
+	width: 320,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	backgroundImage: "/images/DescriptionContainer.png"
 }

@@ -1,5 +1,6 @@
 
 var categorySlug = "all";
+var categoryName;
 var places;
 
 $.placeTable.headerView = Titanium.UI.createWebView( { height:'0', html: "<html><body>blah</body></html>" } );
@@ -45,6 +46,9 @@ mapButton.addEventListener('click', function(e){
 	var mapController = Alloy.createController('map');
 	mapController.setPlaces( places );
 	mapController.getView().navGroup = $.win.navGroup;
+	if ( categorySlug != "all" ){
+		mapController.getView().categoryName = categoryName;
+	}
 	$.win.navGroup.open( mapController.getView() );
 });
 
@@ -84,6 +88,7 @@ function loadPlaces(){
 				
 				if ( categoryRaw ){
 					$.placeTable.headerView.setHtml( categoryRaw.list_liquid_html );
+					categoryName = categoryRaw.name;
 
 					var height =  $.placeTable.headerView.evalJS("document.height") ;
 					Ti.API.info( "Calculating height of headerview: " + height );

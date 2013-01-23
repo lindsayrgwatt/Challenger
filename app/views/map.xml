@@ -4,5 +4,6 @@
 	    <View id="mapView" ns="Ti.Map" animate="true" regionFit="true" userLocation="true">
 	    	
 	    </View>
+	    <Label id='titleBanner' />
     </Window>
 </Alloy>
