@@ -41,6 +41,23 @@ function toggleWishlist(e){
 	}
 }
 
+function drawPlace( place ){
+	if ( place.get('wishlist') ){
+		$.wishlistButton.title = "Remove from Wishlist";
+	} else {
+		$.wishlistButton.title = "Add to Wishlist";
+	}
+	
+	$.placeName.text = place.get('name');
+	
+	$.mapImage.image = place.get('googleMapUrl').replace("size=100x100", "size="+$.mapImage.width+"x"+$.mapImage.height);
+	$.streetAddress.text = place.get('streetAddress');
+	$.placeMemo.text = place.get('memo');
+	
+	$.imagesViewHolder.height = 50;
+}
+
+
 exports.setSlug = function( slug ){	
 	Titanium.API.log( "setting slug: " + slug );
 	placeSlug = slug;
@@ -49,7 +66,6 @@ exports.setSlug = function( slug ){
 	collection.fetch();
 	
 	var places = collection.where({ slug: slug });
-	Titanium.API.log( JSON.stringify( places ) );
 	
 	// open the color info window
 	if ( places[0] ) {
@@ -60,12 +76,50 @@ exports.setSlug = function( slug ){
 		$.mapImage.image = place.get('googleMapUrl').replace("size=100x100", "size="+$.mapImage.width+"x"+$.mapImage.height);
 		
 		$.streetAddress.text = place.get('street_address');
-		$.placeTags.text = place.get('tags');
 		$.placeMemo.text = place.get('memo');
+	} else {
+		var url = Alloy.CFG.serverUrl + "/places/" + slug +  ".json?newcall=true&rf=" + Alloy.CFG.publisher		
+		
+		var xhr = Ti.Network.createHTTPClient({
+			onload: function(e) {
+				var result = JSON.parse(this.responseText);
+				Ti.API.info( JSON.stringify( result ) );
+				var placemark = result.place.referring_perspectives[0];
+				
+				var rPlace = result.place;
+				
+				place = Alloy.createModel('Place', {
+					name:rPlace.name, 
+					slug:rPlace.slug,
+					lng:parseFloat( rPlace.lng ),
+					lat:parseFloat( rPlace.lat ),
+					googleMapUrl:rPlace.map_url,
+					streetAddress:rPlace.street_address,
+					tags:placemark.tags.join(","),
+					googleUrl:rPlace.google_url,
+					memo:placemark.memo, 
+					placeId:rPlace.id,
+					lastViewed:(new Date()),
+					wishlist:false
+				});
+				place.save();
+						
+				drawPlace( place );
+				
+			},
+			onerror: function(e) {	
+				alert("Error:"+JSON.stringify(e));
+			},
+			timeout: 10000
+		});
+		xhr.open("GET", url);
+		xhr.send();
 	}
 }
 
-exports.setPlace = function( placemark ){
+
+
+function setPlace( placemark ){
 	var collection = Alloy.createCollection("Place");
 	collection.fetch();
 	
@@ -94,19 +148,9 @@ exports.setPlace = function( placemark ){
 	}
 	place.save();
 	
-	if ( place.get('wishlist') ){
-		$.wishlistButton.title = "Remove from Wishlist";
-	} else {
-		$.wishlistButton.title = "Add to Wishlist";
-	}
-	
-	$.placeName.text = placemark.place.name;
-	
-	$.mapImage.image = placemark.place.map_url.replace("size=100x100", "size="+$.mapImage.width+"x"+$.mapImage.height);
-	
-	$.streetAddress.text = placemark.place.street_address;
-	$.placeTags.text = placemark.tags.join(",")
-	$.placeMemo.text = placemark.memo;
-	
-	$.imagesViewHolder.height = 50;
+	drawPlace( place );
 }
+
+exports.setPlace = setPlace;
+
+
