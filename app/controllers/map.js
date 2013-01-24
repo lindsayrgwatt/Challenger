@@ -34,7 +34,7 @@ function drawPlaces( places ){
             latitude:placemark.place.lat,
             longitude:placemark.place.lng,
             title:placemark.place.name,
-            image:"/images/PlaceMarker.png",
+            image:"/images/marker.png",
             subtitle:placemark.place.street_address,
             pincolor: Titanium.Map.ANNOTATION_RED,
             rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,	 
