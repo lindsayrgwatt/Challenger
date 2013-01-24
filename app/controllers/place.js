@@ -21,11 +21,11 @@ function closeWindow() {
 
 
 function doHours(){
-	
+	Ti.Platform.openURL( place.get('googleUrl') );
 }
 
 function doCall(){
-	
+	Ti.Platform.openURL("tel://16045061301");
 }
 
 function toggleWishlist(e){
