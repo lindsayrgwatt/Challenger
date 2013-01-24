@@ -15,6 +15,7 @@
 },"#streetAddress":{
 	font:{ fontSize:13, fontFamily:'nevis'},
 	width:280,
+	top:3,
 	height:'auto'
 },
 "#imageViewer":{

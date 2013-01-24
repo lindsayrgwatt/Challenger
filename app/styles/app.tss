@@ -5,6 +5,5 @@
 },
 ".borderedImage":{
 	borderColor: '#ffffff',
-    borderRadius: 10,
     borderWidth: 4,
 }
