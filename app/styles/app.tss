@@ -6,4 +6,7 @@
 ".borderedImage":{
 	borderColor: '#ffffff',
     borderWidth: 4,
+},
+"ImageView":{
+	defaultImage:"/images/defaultBackground.png"
 }
