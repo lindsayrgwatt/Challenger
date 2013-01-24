@@ -30,7 +30,8 @@
 },
 "#twitterPost":{
 	right:20,
-	font:{ fontSize:10, fontFamily:'nevis'}
+	font:{ fontSize:10, fontFamily:'nevis'},
+	color: "#a7aca5"
 },"#mapImage":{
 	top:10,
 	width: 280,
@@ -67,6 +68,6 @@
 	width: 75
 },
 "#tweetText":{
-	font:{ fontSize:12, fontFamily:'nevis'},
+	font:{ fontSize:12, fontWeight:'bold'},
 	left: 40
 }

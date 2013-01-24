@@ -54,8 +54,7 @@ function drawPlace( place ){
 	} else if (rand ==3 ){
 		$.tweetText.text = "We just got featured in SF Indie";
 	}
-	$.tweetText.text  = '"' + $.tweetText.text + '"';
-	$.twitterPost.text = "JAN 24|2013";
+	$.twitterPost.text = "JAN 24";
 	
 	if ( place.get('imageUrl') ){
 		$.imageViewer.image = place.get('imageUrl');
